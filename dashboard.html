@@ -53,7 +53,9 @@ tr.section-divider td{background:#f0fdf4;font-weight:700;font-size:.78rem;color:
 </style>
 </head>
 <body>
-<h1>📋 Dashboard Dentisti <span class="counter" id="cnt">0 / 541 inviati</span></h1>
+<h1>📋 Dashboard Dentisti <span class="counter" id="cnt">0 / 541 inviati</span>
+<button onclick="esportaInviati()" style="margin-left:.8rem;padding:.4rem 1rem;border-radius:999px;border:none;font-size:.75rem;font-weight:600;cursor:pointer;background:#0f766e;color:#fff">⬇ Esporta inviati</button>
+</h1>
 <div class="sub">541 studi · WA prima, poi email, poi solo tel. Clicca ○ = segnato come inviato (si salva al ricarico).</div>
 <div class="tabs"><button class="tab active" onclick="switchTab('tab-mi')" id="btn-tab-mi">Milano <span class="tcnt">338</span></button><button class="tab" onclick="switchTab('tab-pr')" id="btn-tab-pr">Parma <span class="tcnt">144</span></button><button class="tab" onclick="switchTab('tab-alt')" id="btn-tab-alt">Altri <span class="tcnt">59</span></button></div>
 <div id="tab-mi" class="tab-body" style="display:block">
@@ -4410,6 +4412,12 @@ tr.section-divider td{background:#f0fdf4;font-weight:700;font-size:.78rem;color:
 
 <script>
 function getSent(){return JSON.parse(localStorage.getItem('inviati_dentisti')||'{}');}
+function esportaInviati(){
+  var s=getSent(), lista=Object.keys(s).filter(k=>s[k]);
+  var blob=new Blob([JSON.stringify(lista,null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='_inviati.json';a.click();
+  alert('Salva il file _inviati.json nella cartella dentisti/ del progetto.');
+}
 function toggleInviato(btn){
   var key=btn.dataset.key, s=getSent();
   s[key]=!s[key];
