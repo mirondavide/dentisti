@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="it"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard — Dentisti &amp; Studi Odontoiatrici</title>
+<style>
+:root{--blu:#0f2942;--azzurro:#1e6fb8}
+body{font-family:system-ui,sans-serif;background:#f4f7fb;color:#2c3e50;margin:0;padding:2rem}
+h1{margin:0 0 1.2rem;color:var(--blu)}
+table{border-collapse:collapse;width:100%;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 8px 32px -12px rgba(0,0,0,.12)}
+th,td{padding:.7rem 1rem;text-align:left;border-bottom:1px solid #e8f0f7;font-size:.88rem;vertical-align:top}
+th{background:var(--blu);color:rgba(255,255,255,.75);font-size:.73rem;text-transform:uppercase;letter-spacing:.07em}
+.muted{color:#7f8c9a;font-size:.79rem}
+.tag{color:#fff;padding:.12rem .5rem;border-radius:999px;font-size:.7rem;font-weight:700}
+.b{display:inline-block;padding:.42rem .78rem;border-radius:999px;font-weight:600;font-size:.8rem;white-space:nowrap;margin:.1rem}
+.demo{background:#e8f4fb;color:#1a5c8c}
+.wa{background:#25d366;color:#fff}
+.em{background:#e8f0fe;color:#1a73e8}
+.inv-btn{padding:.38rem .72rem;border-radius:999px;font-size:.78rem;font-weight:600;border:none;cursor:pointer;background:#eaf2fb;color:#7f8c9a;transition:background .15s}
+.inv-btn.sent{background:#dcfce7;color:#166534}
+tr.sent-row{opacity:.45}
+tr:hover{background:#f8fbff}
+.exp-btn{padding:.45rem 1.1rem;border-radius:999px;border:none;font-size:.78rem;font-weight:600;cursor:pointer;background:var(--azzurro);color:#fff;margin-left:.5rem}
+.exp-btn:hover{background:#175fa0}
+.stats{display:flex;gap:.6rem;margin-bottom:1rem;flex-wrap:wrap}
+.stat{background:#fff;border:1px solid #dce8f5;border-radius:8px;padding:.5rem 1rem;font-size:.8rem;color:#7f8c9a}
+.stat b{color:var(--azzurro);font-size:1rem}
+</style>
+</head><body>
+
+<h1>🦷 Dentisti &amp; Studi Odontoiatrici &mdash; Parma
+<button class="exp-btn" onclick="esportaInviati()">&#11015; Esporta inviati</button>
+<button class="exp-btn" onclick="importaInviati()">&#11014; Importa inviati</button>
+</h1>
+
+<div class="stats">
+  <div class="stat"><b>43</b><br>Totale studi</div>
+  <div class="stat"><b>1</b><br>WhatsApp</div>
+  <div class="stat"><b>12</b><br>Email</div>
+  <div class="stat"><b>13</b><br>Contatti totali</div>
+</div>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>Nome</th><th>Sito attuale</th><th>Recensioni</th><th>Demo</th><th>Contatta</th><th>Stato</th></tr>
+  </thead>
+  <tbody>
+    <tr id="r-dent-dr-palmas-store-bergamo">
+<td>1</td>
+<td><b>Dr Palmas Store Bergamo</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#dc2626">SENZA SITO</span><br><span class="muted">nessun sito</span></td>
+<td>79 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/dentisti/bergamo/dr-palmas-store-bergamo/" target="_blank">Vedi sito</a></td>
+<td><a class="b wa" href="https://wa.me/393759377503?text=Buongiorno%2C%20mi%20chiamo%20Davide%20e%20ho%20creato%20un%20sito%20da%20zero%20per%20Dr%20Palmas%20Store.%0AEccolo%3A%20https%3A//mirondavide.com/dentisti/bergamo/dr-palmas-store-bergamo/%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196" target="_blank">📲 WhatsApp</a></td>
+<td><button class="inv-btn" data-key="dent-dr-palmas-store-bergamo" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr id="r-dent-studio-ortodontico-dr-ssa-silvia-bernini">
+<td>2</td>
+<td><b>Studio Ortodontico Dr.ssa Silvia Bernini</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS, copyright 2018</span></td>
+<td>1061 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/dentisti/bergamo/studio-ortodontico-dr-ssa-silvia-bernini/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:studio@dottoressabernini.it?subject=Sito%20nuovo%20per%20Studio%20Ortodontico%20Dr.ssa&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Studio%20Ortodontico%20Dr.ssa.%0AEccolo%3A%20https%3A//mirondavide.com/dentisti/bergamo/studio-ortodontico-dr-ssa-silvia-bernini/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="dent-studio-ortodontico-dr-ssa-silvia-bernini" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr id="r-dent-studio-medico-dentistico-ferrari-dr-giovanni-i-den">
+<td>3</td>
+<td><b>Studio Medico Dentistico Ferrari Dr. Giovanni I Dentista e Medicina Estetica Bergamo - Seriate</b><br><span class="muted">Seriate BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>337 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/dentisti/bergamo/studio-medico-dentistico-ferrari-dr-giovanni-i-den/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:giovanni.ferrari3@crs.lombardia.it?subject=Sito%20nuovo%20per%20Studio%20Medico%20Dentistico&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Studio%20Medico%20Dentistico.%0AEccolo%3A%20https%3A//mirondavide.com/dentisti/bergamo/studio-medico-dentistico-ferrari-dr-giovanni-i-den/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="dent-studio-medico-dentistico-ferrari-dr-giovanni-i-den" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr id="r-dent-studio-odontoiatrico-sallorenzo-dentista-bergamo">
+<td>4</td>
+<td><b>Studio Odontoiatrico Sallorenzo - Dentista Bergamo</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>100 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/dentisti/bergamo/studio-odontoiatrico-sallorenzo-dentista-bergamo/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@sallorenzo.com?subject=Sito%20nuovo%20per%20Sallorenzo%20Dentista%20Bergamo&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Sallorenzo%20Dentista%20Bergamo.%0AEccolo%3A%20https%3A//mirondavide.com/dentisti/bergamo/studio-odontoiatrico-sallorenzo-dentista-bergamo/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="dent-studio-odontoiatrico-sallorenzo-dentista-bergamo" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr id="r-dent-studio-medico-odontoiatrico-dott-ri-rampinelli">
+<td>5</td>
+<td><b>Studio Medico Odontoiatrico Dott.ri Rampinelli</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>69 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/dentisti/bergamo/studio-medico-odontoiatrico-dott-ri-rampinelli/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@studiorampinelli.com?subject=Sito%20nuovo%20per%20Studio%20Medico%20Odontoiatrico&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Studio%20Medico%20Odontoiatrico.%0AEccolo%3A%20https%3A//mirondavide.com/dentisti/bergamo/studio-medico-odontoiatrico-dott-ri-rampinelli/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="dent-studio-medico-odontoiatrico-dott-ri-rampinelli" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr id="r-dent-centro-odontoiatrico-caccianiga">
+<td>6</td>
+<td><b>Centro Odontoiatrico Caccianiga</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>47 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/dentisti/bergamo/centro-odontoiatrico-caccianiga/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@caccianiga.it?subject=Sito%20nuovo%20per%20Caccianiga&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Caccianiga.%0AEccolo%3A%20https%3A//mirondavide.com/dentisti/bergamo/centro-odontoiatrico-caccianiga/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="dent-centro-odontoiatrico-caccianiga" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr id="r-dent-consul-med">
+<td>7</td>
+<td><b>Consul Med</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>47 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/dentisti/bergamo/consul-med/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:consulmed@hotmail.it?subject=Sito%20nuovo%20per%20Consul%20Med&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Consul%20Med.%0AEccolo%3A%20https%3A//mirondavide.com/dentisti/bergamo/consul-med/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="dent-consul-med" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr id="r-dent-studio-dentistico-gelmi">
+<td>8</td>
+<td><b>Studio Dentistico Gelmi</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>45 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/dentisti/bergamo/studio-dentistico-gelmi/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:flags@2x.webp?subject=Sito%20nuovo%20per%20Gelmi&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Gelmi.%0AEccolo%3A%20https%3A//mirondavide.com/dentisti/bergamo/studio-dentistico-gelmi/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="dent-studio-dentistico-gelmi" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr id="r-dent-studio-associato-dott-enrico-e-dott-federico-rampi">
+<td>9</td>
+<td><b>Studio Associato Dott. Enrico e Dott. Federico Rampinelli</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS, non adatto al telefono</span></td>
+<td>45 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/dentisti/bergamo/studio-associato-dott-enrico-e-dott-federico-rampi/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@studiorampinelli.it?subject=Sito%20nuovo%20per%20Studio%20Associato%20Dott.&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Studio%20Associato%20Dott..%0AEccolo%3A%20https%3A//mirondavide.com/dentisti/bergamo/studio-associato-dott-enrico-e-dott-federico-rampi/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="dent-studio-associato-dott-enrico-e-dott-federico-rampi" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr id="r-dent-studio-odontoiatrico-temani-dr-togni-dr-papa-dr-m-">
+<td>10</td>
+<td><b>Studio Odontoiatrico Temani - Dr. Togni - Dr. Papa - Dr. M. Temani Moschetti</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>44 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/dentisti/bergamo/studio-odontoiatrico-temani-dr-togni-dr-papa-dr-m-/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@studiotemanitogni.it?subject=Sito%20nuovo%20per%20Temani%20Dr.%20Togni&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Temani%20Dr.%20Togni.%0AEccolo%3A%20https%3A//mirondavide.com/dentisti/bergamo/studio-odontoiatrico-temani-dr-togni-dr-papa-dr-m-/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="dent-studio-odontoiatrico-temani-dr-togni-dr-papa-dr-m-" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr id="r-dent-dr-gianluigi-zirafa">
+<td>11</td>
+<td><b>Dr. Gianluigi Zirafa</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>39 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/dentisti/bergamo/dr-gianluigi-zirafa/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:wp.zanoni@gmail.com?subject=Sito%20nuovo%20per%20Gianluigi%20Zirafa&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Gianluigi%20Zirafa.%0AEccolo%3A%20https%3A//mirondavide.com/dentisti/bergamo/dr-gianluigi-zirafa/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="dent-dr-gianluigi-zirafa" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr id="r-dent-dott-massimiliano-lombardo-srl">
+<td>12</td>
+<td><b>Dott. Massimiliano Lombardo srl</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>30 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/dentisti/bergamo/dott-massimiliano-lombardo-srl/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@massimilianolombardo.com?subject=Sito%20nuovo%20per%20Massimiliano%20Lombardo%20srl&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Massimiliano%20Lombardo%20srl.%0AEccolo%3A%20https%3A//mirondavide.com/dentisti/bergamo/dott-massimiliano-lombardo-srl/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="dent-dott-massimiliano-lombardo-srl" onclick="tog(this)">○ Da inviare</button></td>
+</tr><tr id="r-dent-volp-dental-poliambulatorio-chirurgico-odontoiatri">
+<td>13</td>
+<td><b>Volp.dental - Poliambulatorio Chirurgico Odontoiatrico</b><br><span class="muted">Bergamo BG</span></td>
+<td><span class="tag" style="background:#d97706">SITO VECCHIO</span><br><span class="muted">no HTTPS</span></td>
+<td>30 ⭐</td>
+<td><a class="b demo" href="https://mirondavide.com/dentisti/bergamo/volp-dental-poliambulatorio-chirurgico-odontoiatri/" target="_blank">Vedi sito</a></td>
+<td><a class="b em" href="mailto:info@volp.dental?subject=Sito%20nuovo%20per%20Volp.dental%20Poliambulatorio%20Chirurgico&amp;body=Buongiorno%2C%0A%0Ami%20chiamo%20Davide%2C%20realizzo%20siti%20web%20per%20attivit%C3%A0%20locali.%0AHo%20preparato%20una%20versione%20pi%C3%B9%20moderna%20del%20sito%20per%20Volp.dental%20Poliambulatorio%20Chirurgico.%0AEccolo%3A%20https%3A//mirondavide.com/dentisti/bergamo/volp-dental-poliambulatorio-chirurgico-odontoiatri/%0A%0ALavoro%20da%20solo%20%E2%80%94%20niente%20agenzie.%20Il%20prezzo%20parte%20da%20%E2%82%AC500%20per%20una%20homepage%20completa%2C%20consegnata%20in%2072%20ore.%0A%0ASe%20vi%20interessa%2C%20possiamo%20sentirci%2010%20minuti%20%E2%80%94%20anche%20al%20telefono%20o%20passo%20di%20persona.%0A%0AUn%20saluto%2C%0ADavide%20%E2%80%94%20379%20210%206196%0A%0A---%0APer%20non%20ricevere%20altri%20messaggi%3A%20rispondete%20%27rimuovi%27.">📧 Email</a></td>
+<td><button class="inv-btn" data-key="dent-volp-dental-poliambulatorio-chirurgico-odontoiatri" onclick="tog(this)">○ Da inviare</button></td>
+</tr>
+  </tbody>
+</table>
+
+<p style="margin-top:1.2rem;font-size:.78rem;color:#7f8c9a">Invia i messaggi a mano, uno alla volta. Niente invii automatici.</p>
+
+<script>
+function importaInviati(){
+  var input=document.createElement('input');
+  input.type='file';input.accept='.json';
+  input.onchange=function(e){
+    var reader=new FileReader();
+    reader.onload=function(ev){
+      var slugs=JSON.parse(ev.target.result);
+      var data=get();
+      slugs.forEach(function(s){data[s]=true;});
+      localStorage.setItem('inv_dent',JSON.stringify(data));
+      location.reload();
+    };
+    reader.readAsText(e.target.files[0]);
+  };
+  input.click();
+}
+function esportaInviati(){
+  var s=get();
+  var lista=Object.keys(s).filter(k=>s[k]);
+  var blob=new Blob([JSON.stringify(lista,null,2)],{type:'application/json'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='_inviati.json';
+  a.click();
+  alert('Salva il file _inviati.json nella cartella dentisti/ del progetto.');
+}
+function tog(btn){
+  var k=btn.dataset.key,s=get();s[k]=!s[k];
+  localStorage.setItem('inv_dent',JSON.stringify(s));
+  applyBtn(btn,s[k]);
+}
+function get(){return JSON.parse(localStorage.getItem('inv_dent')||'{}');}
+function applyBtn(btn,v){
+  btn.textContent=v?'✅ Inviato':'○ Da inviare';
+  btn.classList.toggle('sent',v);
+  btn.closest('tr').classList.toggle('sent-row',v);
+}
+window.onload=function(){
+  var s=get();
+  document.querySelectorAll('.inv-btn').forEach(b=>{if(s[b.dataset.key])applyBtn(b,true);});
+};
+</script>
+</body></html>
